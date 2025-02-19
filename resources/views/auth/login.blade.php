@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
 <div class="">
 
 
@@ -81,9 +80,6 @@
 
 
 {{-- 
-=======
-<div class="container">
->>>>>>> e099b19 (mise en plqce de laravel/ui)
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

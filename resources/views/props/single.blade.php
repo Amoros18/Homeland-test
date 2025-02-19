@@ -20,15 +20,13 @@
           <div class="col-lg-8">
             <div>
               <div class="slide-one-item home-slider owl-carousel">
-                <div><img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid"></div>
-                <div><img src="images/hero_bg_2.jpg" alt="Image" class="img-fluid"></div>
-                <div><img src="images/hero_bg_3.jpg" alt="Image" class="img-fluid"></div>
+                <div><img src="{{ asset('assets/images/'.$singleProp->image.'')}}" alt="Image" class="img-fluid"></div>
               </div>
             </div>
             <div class="bg-white property-body border-bottom border-left border-right">
               <div class="row mb-5">
                 <div class="col-md-6">
-                
+
                   <strong class="text-success h1 mb-3">${{$singleProp->price}}</strong>
                 </div>
                 <div class="col-md-6">
@@ -72,40 +70,13 @@
                   <h2 class="h4 text-black mb-3">Gallery</h2>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_1.jpg" class="image-popup gal-item"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="{{asset('assets/images/img_1.jpg')}}" class="image-popup gal-item"><img src="{{asset('assets/images/img_1.jpg')}}" alt="Image" class="img-fluid"></a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="{{asset('assets/images/img_2.jpg')}}" class="image-popup gal-item"><img src="{{asset('assets/images/img_2.jpg')}}" alt="Image" class="img-fluid"></a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_5.jpg" class="image-popup gal-item"><img src="images/img_5.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_6.jpg" class="image-popup gal-item"><img src="images/img_6.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_7.jpg" class="image-popup gal-item"><img src="images/img_7.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_8.jpg" class="image-popup gal-item"><img src="images/img_8.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_1.jpg" class="image-popup gal-item"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="{{asset('assets/images/img_3.jpg')}}" class="image-popup gal-item"><img src="{{asset('assets/images/img_3.jpg')}}" alt="Image" class="img-fluid"></a>
                 </div>
               </div>
             </div>
@@ -139,6 +110,15 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit qui explicabo, libero nam, saepe eligendi. Molestias maiores illum error rerum. Exercitationem ullam saepe, minus, reiciendis ducimus quis. Illo, quisquam, veritatis.</p>
             </div>
 
+            <div class="bg-white widget border rounded">
+              <h3 class="h4 text-black widget-title mb-3 ml-0">Share</h3>
+                    <div class="px-3" style="margin-left: :-15px;">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{route('single.prop',parameters: $singleProp->id)}}&quote={{$singleProp->id}}" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                        <a href="https://x.com/intent/tweet?text={{$singleProp->id}}&url={{route('single.prop',$singleProp->id)}}" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                        <a href="https://linkedin.com/sharing/share-offsite/?url{{route('single.prop',$singleProp->id)}}" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                    </div>
+            </div>
+
           </div>
           
         </div>
@@ -157,112 +137,53 @@
         </div>
       
         <div class="row mb-5">
+
+        @if ($relateProps->count() > 0)
+
+        @foreach ($relateProps as $relateProp )
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
+              <a href="{{route('single.prop',$relateProp->id)}}" class="property-thumbnail">
                 <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
+                  {{-- <span class="offer-type bg-danger">Sale</span> --}}
+                  <span class="offer-type bg-success">{{$relateProp->type}}</span>
                 </div>
-                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                <img src="{{asset('assets/images/'.$relateProp->image.'')}}" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="property-details.html">625 S. Berendo St</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 625 S. Berendo St Unit 607 Los Angeles, CA 90005</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$2,265,500</strong>
+                <h2 class="property-title"><a href="{{route('single.prop',$relateProp->id)}}">{{$relateProp->title}}</a></h2>
+                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{$relateProp->location}}</span>
+                <strong class="property-price text-primary mb-3 d-block text-success">${{$relateProp->price}}</strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
                   <li>
                     <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">2 <sup>+</sup></span>
+                    <span class="property-specs-number">{{$relateProp->beds}} <sup>+</sup></span>
                     
                   </li>
                   <li>
                     <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
+                    <span class="property-specs-number">{{$relateProp->baths}}</span>
                     
                   </li>
                   <li>
                     <span class="property-specs">SQ FT</span>
-                    <span class="property-specs-number">7,000</span>
+                    <span class="property-specs-number">{{$relateProp->price_sqft}}</span>
                     
                   </li>
                 </ul>
 
               </div>
             </div>
-          </div>
+          </div>   
+        @endforeach
+        @else
 
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <a href="#" class="property-favorite active"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="property-details.html">871 Crenshaw Blvd</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 1 New York Ave, Warners Bay, NSW 2282</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$2,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">2 <sup>+</sup></span>
-                    
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
-                    
-                  </li>
-                  <li>
-                    <span class="property-specs">SQ FT</span>
-                    <span class="property-specs-number">1,620</span>
-                    
-                  </li>
-                </ul>
+        <h3 class="alert alert-success"> they are not related properties for now</h3>
+            
+        @endif
 
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-info">Lease</span>
-                </div>
-                <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="property-details.html">853 S Lucerne Blvd</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 S Lucerne Blvd Unit 101 Los Angeles, CA 90005</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$2,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">2 <sup>+</sup></span>
-                    
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
-                    
-                  </li>
-                  <li>
-                    <span class="property-specs">SQ FT</span>
-                    <span class="property-specs-number">5,500</span>
-                    
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
 

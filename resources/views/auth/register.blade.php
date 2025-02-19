@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
 <div class="">
 
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{asset('assets/images/hero_bg_2.jpg')}});" data-aos="fade">
@@ -14,12 +13,6 @@
       </div>
     </div>
     <div class="card">
-=======
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
->>>>>>> e099b19 (mise en plqce de laravel/ui)
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -86,12 +79,7 @@
                     </form>
                 </div>
             </div>
-<<<<<<< HEAD
 
 
-=======
-        </div>
-    </div>
->>>>>>> e099b19 (mise en plqce de laravel/ui)
 </div>
 @endsection

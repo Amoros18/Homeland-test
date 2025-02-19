@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\Prop\PropertiesController;
-=======
->>>>>>> e099b19 (mise en plqce de laravel/ui)
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +20,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-<<<<<<< HEAD
 Route::get('/home', [PropertiesController::class, 'index'])->name('home');
 Route::get('/prop-details/{id}', [PropertiesController::class, 'single'])->name('single.prop');
-
-=======
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
->>>>>>> e099b19 (mise en plqce de laravel/ui)
