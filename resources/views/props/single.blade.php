@@ -28,6 +28,7 @@
             <div class="bg-white property-body border-bottom border-left border-right">
               <div class="row mb-5">
                 <div class="col-md-6">
+                
                   <strong class="text-success h1 mb-3">${{$singleProp->price}}</strong>
                 </div>
                 <div class="col-md-6">
