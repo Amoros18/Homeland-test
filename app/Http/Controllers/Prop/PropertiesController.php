@@ -32,4 +32,9 @@ class PropertiesController extends Controller
         return view('props.single',compact('singleProp','propImage','relateProps'));
     }
 
+    public function insertRequest(Request $request){
+         
+        echo "request is completed";
+    }
+
 }
