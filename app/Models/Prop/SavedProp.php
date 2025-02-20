@@ -5,19 +5,20 @@ namespace App\Models\Prop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class SavedProp extends Model
 {
     use HasFactory;
 
-    protected $table = "requests";
+    
+    protected $table = "savedprops";
 
     protected $fillable = [
         'prop_id',
-        'agent_name',
         'user_id',
-        'name', 
-        'email',
-        'phone'
+        'title',
+        'image',
+        'price',
+        'location',
     ];
 
     public  $timestamps = true;

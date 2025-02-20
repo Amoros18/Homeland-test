@@ -43,7 +43,7 @@
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
-                        <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Homeland<span
+                        <h1 class="mb-0"><a href="{{url('/')}}" class="text-white h2 mb-0"><strong>Homeland<span
                                         class="text-danger">.</span></strong></a></h1>
                     </div>
                     <div class="col-4 col-md-4 col-lg-8">
@@ -55,29 +55,21 @@
 
                             <ul class="site-menu js-clone-nav d-none d-lg-block">
                                 <li class="active">
-                                    <a href="index.html">Home</a>
+                                    <a href="{{url('/')}}">Home</a>
                                 </li>
-                                <li><a href="buy.html">Buy</a></li>
-                                <li><a href="rent.html">Rent</a></li>
+                                <li><a href="{{route('buy.prop')}}">Buy</a></li>
+                                <li><a href="{{route('rent.prop')}}">Rent</a></li>
                                 <li class="has-children">
                                     <a href="properties.html">Properties</a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="#">Condo</a></li>
-                                        <li><a href="#">Property Land</a></li>
-                                        <li><a href="#">Commercial Building</a></li>
-                                        <li class="has-children">
-                                            <a href="#">Sub Menu</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Menu One</a></li>
-                                                <li><a href="#">Menu Two</a></li>
-                                                <li><a href="#">Menu Three</a></li>
-                                            </ul>
-                                        </li>
+                                    @foreach ($hometypes as $hometype )
+                                            <li><a href="{{route('display.prop.hometype', $hometype->hometypes)}}">{{$hometype->hometypes}}</a></li>
+                                    @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                {{-- <li><a href="blog.html">Blog</a></li> --}}
+                                <li><a href="{{route('about')}}">About</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                                 <li class="navbar-nav ms-auto">
                                     <!-- Authentication Links -->
                                     @guest

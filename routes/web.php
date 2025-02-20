@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Prop\PropertiesController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [PropertiesController::class, 'index'])->name('home');
 
 Auth::routes();
 
@@ -25,4 +27,20 @@ Route::get('/prop-details/{id}', [PropertiesController::class, 'single'])->name(
 
 
 //insert request
-Route::post('/prop-details/{id}', [PropertiesController::class, 'insertRequest'])->name('insert_request');
+Route::post('/prop-details/{id}', [PropertiesController::class, 'insertRequest'])->name('insert.request');
+
+
+// saving props
+Route::post('/prop-save/{id}', [PropertiesController::class, 'saveProps'])->name('save.prop');
+
+//displaying props by rent and buy
+Route::get('/props/type/Buy', [PropertiesController::class, 'propsBuy'])->name('buy.prop');
+Route::get('/props/type/Rent', [PropertiesController::class, 'propsRent'])->name('rent.prop');
+
+
+//displaying props by home type
+Route::get('/props/home-type/{hometype}', [PropertiesController::class, 'displaysByHomeType'])->name('display.prop.hometype');
+
+//display contact and about page
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('about', [HomeController::class, 'about'])->name('about');
