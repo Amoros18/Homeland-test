@@ -98,6 +98,12 @@
                                                      document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
+                                             <a class="dropdown-item" href="{{ route('all.request') }}">
+                                                All Requests
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('all.saved.props') }}" >
+                                                All Saved Properties
+                                            </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                 class="d-none">

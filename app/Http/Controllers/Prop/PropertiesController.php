@@ -14,7 +14,7 @@ class PropertiesController extends Controller
 {
     
     public function index(){
-        $props = Property::select()->take(9)->orderBy('created_at','desc')->get();
+        $props = Property::select()->take(value: 9)->orderBy('id','DESC')->get();
 
         return view('home',compact('props'));
     }
@@ -142,5 +142,21 @@ class PropertiesController extends Controller
         return view('props.propspricedesc',compact('propsByPriceDesc'));
     }
     
+    //searching for props
     
+    public function searchProps(Request $request){
+        $list_types = $request->get('list_types');
+        $offer_types = $request->get('offer_types');
+        $select_city = $request->get('select_city');
+
+        $searches = Property::select()
+        ->where('home_type','like',"%$list_types%")
+        ->where('type','like',"%$offer_types%")
+        ->where('city','like',"%$select_city%")
+        ->get();
+
+        // dd($searches);
+
+        return view('props.searches',compact('searches'));
+    }
 }

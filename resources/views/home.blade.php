@@ -12,8 +12,13 @@
                     <div class="container">
                         <div class="row align-items-center justify-content-center text-center">
                             <div class="col-md-10">
-                                <span
-                                    class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">{{ $prop->type }}</span>
+                            @if ($prop->type == "Buy")
+                                <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">{{ $prop->type }}</span>
+                            @elseif($prop->type == "Rent")
+                                <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">{{ $prop->type }}</span>
+                            @else
+                                <span class="d-inline-block bg-warning text-white px-3 mb-3 property-offer-type rounded">{{ $prop->type }}</span>
+                            @endif
                                 <h1 class="mb-2">{{ $prop->title }}</h1>
                                 <p class="mb-5"><strong
                                         class="h2 text-success font-weight-bold">{{ $prop->price }}</strong></p>
@@ -31,27 +36,28 @@
         <div class="site-section site-section-sm pb-0">
             <div class="container">
                 <div class="row">
-                    <form class="form-search col-md-12" style="margin-top: -100px;">
+                    <form action="{{route('search.props')}}" method="POST" class="form-search col-md-12" style="margin-top: -100px;">
+                        @csrf
                         <div class="row  align-items-end">
                             <div class="col-md-3">
                                 <label for="list-types">Listing Types</label>
                                 <div class="select-wrap">
                                     <span class="icon icon-arrow_drop_down"></span>
-                                    <select name="list-types" id="list-types" class="form-control d-block rounded-0">
-                                        <option value="">Condo</option>
-                                        <option value="">Commercial Building</option>
-                                        <option value="">Land Property</option>
+                                    <select name="list_types" id="list-types" class="form-control d-block rounded-0">
+                                        <option value="Condo">Condo</option>
+                                        <option value="Commercial">Commercial Building</option>
+                                        <option value="Land">Land Property</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <label for="offer-types">Offer Type</label>
+                                <label for="offer_types">Offer Type</label>
                                 <div class="select-wrap">
                                     <span class="icon icon-arrow_drop_down"></span>
-                                    <select name="offer-types" id="offer-types" class="form-control d-block rounded-0">
-                                        <option value="">For Sale</option>
-                                        <option value="">For Rent</option>
-                                        <option value="">For Lease</option>
+                                    <select name="offer_types" id="offer-types" class="form-control d-block rounded-0">
+                                        <option value="Buy">For Buy</option>
+                                        <option value="Rent">For Rent</option>
+                                        <option value="Lease">For Lease</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,17 +65,17 @@
                                 <label for="select-city">Select City</label>
                                 <div class="select-wrap">
                                     <span class="icon icon-arrow_drop_down"></span>
-                                    <select name="select-city" id="select-city" class="form-control d-block rounded-0">
-                                        <option value="">New York</option>
-                                        <option value="">Brooklyn</option>
-                                        <option value="">London</option>
-                                        <option value="">Japan</option>
-                                        <option value="">Philippines</option>
+                                    <select name="select_city" id="select-city" class="form-control d-block rounded-0">
+                                        <option value="New York">New York</option>
+                                        <option value="Brooklyn">Brooklyn</option>
+                                        <option value="London">London</option>
+                                        <option value="Tokyo">Tokyo</option>
+                                        <option value="Cairo">Cairo</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
+                                <input type="submit" name="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
                             </div>
                         </div>
                     </form>
