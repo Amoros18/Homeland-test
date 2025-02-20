@@ -33,16 +33,21 @@ class PropertiesController extends Controller
         ->get();
         
         //validate form request
-        $validateFormCount = AllRequest::where('prop_id',$id)
-        ->where('user_id',Auth::user()->id)
-        ->count();
+        if(auth()->user()){
 
-        //validate saving proprety
-        $validateSavingPropretyCount = SavedProp::where('prop_id',$id)
-        ->where('user_id',Auth::user()->id)
-        ->count();
+            $validateFormCount = AllRequest::where('prop_id',$id)
+            ->where('user_id',Auth::user()->id)
+            ->count();
+    
+            //validate saving proprety
+            $validateSavingPropretyCount = SavedProp::where('prop_id',$id)
+            ->where('user_id',Auth::user()->id)
+            ->count();
+            return view('props.single',compact('singleProp','propImage','relateProps','validateFormCount','validateSavingPropretyCount'));
 
-        return view('props.single',compact('singleProp','propImage','relateProps','validateFormCount','validateSavingPropretyCount'));
+        }
+        
+        return view('props.single',compact('singleProp','propImage','relateProps'));
     }
 
     public function insertRequest(Request $request){
@@ -116,6 +121,26 @@ class PropertiesController extends Controller
 
         return view('props.propshometype',compact('propsByHomeType','hometype'));
     }
+    
+    public function priceAsc(){
 
+        $propsByPriceAsc = Property::select()
+        ->take(9)
+        ->orderBy('price',"asc")
+        ->get();
+
+        return view('props.propspriceasc',compact('propsByPriceAsc'));
+    }
+
+    public function priceDesc(){
+
+        $propsByPriceDesc = Property::select()
+        ->take(9)
+        ->orderBy('price',"desc")
+        ->get();
+
+        return view('props.propspricedesc',compact('propsByPriceDesc'));
+    }
+    
     
 }

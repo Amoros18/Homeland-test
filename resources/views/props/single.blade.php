@@ -99,78 +99,90 @@
             <div class="bg-white widget border rounded">
 
               <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
-              @if ($validateFormCount > 0)
-              <p class="alert alert-success"> You already sent a request for this proprety</p>
+              @if (isset(Auth::user()->id))
+                @if ($validateFormCount > 0)
+                <p class="alert alert-success"> You already sent a request for this proprety</p>
+                @else
+                <form method="POST" action="{{route('insert.request',$singleProp->id)}}" class="form-contact-agent">
+                  @csrf
+                  <div class="form-group">
+                    <input type="hidden" name="prop_id" value="{{$singleProp->id}}"  id="name" class="form-control">
+                  </div><div class="form-group">
+                    <input type="hidden" name="title" value="{{$singleProp->title}}"  id="name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control">
+                  </div>
+                  @error('name')
+                  <span class="text-danger" role="alert">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+                  <div class="form-group">
+                    <label for="location">location</label>
+                    <input type="location" name="location" id="location" class="form-control">
+                  </div>
+                  @error('location')
+                  <span class="text-danger" role="alert">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+                  <div class="form-group">
+                    <label for="price">Phone</label>
+                    <input type="text" name="price" id="price" class="form-control">
+                  </div>
+                  @error('price')
+                  <span class="text-danger" role="alert">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+                  <div class="form-group">
+                    <input type="submit" name="submit" id="price" class="btn btn-primary" value="Send Request">
+                  </div>
+                </form>
+                @endif
               @else
-              <form method="POST" action="{{route('insert.request',$singleProp->id)}}" class="form-contact-agent">
-                @csrf
-                <div class="form-group">
-                  <input type="hidden" name="prop_id" value="{{$singleProp->id}}"  id="name" class="form-control">
-                </div><div class="form-group">
-                  <input type="hidden" name="title" value="{{$singleProp->title}}"  id="name" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control">
-                </div>
-                @error('name')
-                <span class="text-danger" role="alert">
-                  <strong>{{$message}}</strong>
-                </span>
-                @enderror
-                <div class="form-group">
-                  <label for="location">location</label>
-                  <input type="location" name="location" id="location" class="form-control">
-                </div>
-                @error('location')
-                <span class="text-danger" role="alert">
-                  <strong>{{$message}}</strong>
-                </span>
-                @enderror
-                <div class="form-group">
-                  <label for="price">Phone</label>
-                  <input type="text" name="price" id="price" class="form-control">
-                </div>
-                @error('price')
-                <span class="text-danger" role="alert">
-                  <strong>{{$message}}</strong>
-                </span>
-                @enderror
-                <div class="form-group">
-                  <input type="submit" name="submit" id="price" class="btn btn-primary" value="Send Request">
-                </div>
-              </form>
+              <p class="alert alert-success">Login to sent a request to the property</p>
+                  
               @endif
+
             </div>
 
             
             <div class="bg-white widget border rounded">
 
               <h3 class="h4 text-black widget-title mb-3">Save this proprety</h3>
-              @if ($validateSavingPropretyCount > 0)
-                   <input type="submit" name="submit" id="price" class="btn btn-primary" disabled value="You already save this proprety">
+              @if (isset(Auth::user()->id))
+                @if ($validateSavingPropretyCount > 0)
+                    <input type="submit" name="submit" id="price" class="btn btn-primary" disabled value="You already save this proprety">
+                @else
+                <form method="POST" action="{{route('save.prop',parameters: $singleProp->id)}}" class="form-contact-agent">
+                  @csrf
+                  <div class="form-group">
+                    <input type="hidden" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
+                  </div><div class="form-group">
+                    <input type="hidden" name="title" value="{{$singleProp->title}}" id="name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" name="image" value="{{$singleProp->image}}" id="name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" name="location" id="location" value="{{$singleProp->location}}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" name="price" id="price" value="{{$singleProp->price}}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" name="submit" id="price" class="btn btn-primary" value="Save proprety">
+                  </div>
+                </form>
+                @endif
               @else
-              <form method="POST" action="{{route('save.prop',parameters: $singleProp->id)}}" class="form-contact-agent">
-                @csrf
-                <div class="form-group">
-                  <input type="hidden" name="prop_id" value="{{$singleProp->id}}" id="name" class="form-control">
-                </div><div class="form-group">
-                  <input type="hidden" name="title" value="{{$singleProp->title}}" id="name" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="hidden" name="image" value="{{$singleProp->image}}" id="name" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="hidden" name="location" id="location" value="{{$singleProp->location}}" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="hidden" name="price" id="price" value="{{$singleProp->price}}" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="submit" id="price" class="btn btn-primary" value="Save proprety">
-                </div>
-              </form>
+                <p class="alert alert-success">Login to save property</p>
+                  
               @endif
+
             </div>
 
             <div class="bg-white widget border rounded">

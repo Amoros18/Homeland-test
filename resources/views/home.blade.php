@@ -79,9 +79,9 @@
                     <div class="col-md-12">
                         <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
                             <div class="mr-auto">
-                                <a href="index.html" class="icon-view view-module active"><span
+                                <a href="{{route('home')}}" class="icon-view view-module active"><span
                                         class="icon-view_module"></span></a>
-                                <a href="view-list.html" class="icon-view view-list"><span
+                                <a href="{{route('home')}}" class="icon-view view-list"><span
                                         class="icon-view_list"></span></a>
 
                             </div>
@@ -89,17 +89,9 @@
                                 <div>
                                     <a href="{{route('home')}}" class="view-list px-3 border-right active">All</a>
                                     <a href="{{route('rent.prop')}}" class="view-list px-3 border-right">Rent</a>
-                                    <a href="{{route('buy.prop')}}" class="view-list px-3">Buy</a>
-                                </div>
-
-
-                                <div class="select-wrap">
-                                    <span class="icon icon-arrow_drop_down"></span>
-                                    <select class="form-control form-control-sm d-block rounded-0">
-                                        <option value="">Sort by</option>
-                                        <option value="">Price Ascending</option>
-                                        <option value="">Price Descending</option>
-                                    </select>
+                                    <a href="{{route('buy.prop')}}" class="view-list px-3 border-right">Buy</a>
+                                    <a href="{{route('price.asc.prop')}}" class="view-list px-3 border-right">Price  Ascending</a>
+                                    <a href="{{route('price.desc.prop')}}" class="view-list px-3">Price Descending</a>
                                 </div>
                             </div>
                         </div>
