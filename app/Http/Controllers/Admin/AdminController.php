@@ -134,5 +134,21 @@ class AdminController extends Controller
 
         return view('admins.hometypes',compact('allHomeTypes'))->with('success','Admin Delete Successfuky');
     }
+
+    public function request(){
+        
+        $allRequests = AllRequest::select()->get();
+
+        return view('admins.requests',compact('allRequests'));
+    }
+
+    public function allProps(){
+        
+        $allProps = Property::all();
+
+        return view('admins.props',compact('allProps'));
+    }
+
+    
     
 }

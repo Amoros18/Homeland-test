@@ -81,4 +81,14 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/update-hometype/{id}', [AdminController::class, 'updateHomeType'])->name('hometypes.update');
     Route::get('/delete-hometype/{id}', [AdminController::class, 'deleteHomeType'])->name('hometypes.delete');
 
+
+
+    //requests
+    Route::get('/all-requests', [AdminController::class, 'request'])->name('request.all');
+
+
+    //props
+    Route::get('/all-props', [AdminController::class, 'allProps'])->name('props.all');
+    Route::get('/delete-prop/{id}', [AdminController::class, 'deleteProp'])->name('props.delete');
+
 });

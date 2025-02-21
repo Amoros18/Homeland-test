@@ -24,23 +24,20 @@
                     <th>#</th>
                     <th>Admin Name</th>
                     <th>Email</th>
-                    <th>Derniere connexion</th>
+                    <th>Phone </th>
+                    <th>Agent name </th>
                     
-                    <th>Modifier</th>
-                    <th>Suprimer</th>
+                    <th>Go to this property</th>
                 </thead>
                 <tbody>
-                    @foreach ($allAdmins as $Liste )
+                    @foreach ($allRequests as $Liste )
                         <tr>
-                            <td>{{$Liste->id}}</td>
+                            <td scope="row">{{$Liste->id}}</td>
                             <td>{{$Liste->name}}</td>
                             <td>{{$Liste->email}}</td>
-                            <td>{{$Liste->email_verified_at}}</td>
-                            
-                            <td><a  href = " ">
-                                <button type="edit">Modifier</button></a></td>
-                            <td><a  href = " ">
-                                <button type="edit">Suprimer</button></a></td>
+                            <td>{{$Liste->phone}}</td>
+                            <td>{{$Liste->agent_name}}</td>
+                            <td><a  href = "{{route('single.prop',$Liste->prop_id)}}" class="btn btn-success text-center">go to this property</a>
                         </tr>
                     @endforeach
                 </tbody>
