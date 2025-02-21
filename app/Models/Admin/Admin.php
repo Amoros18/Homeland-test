@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +43,8 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function isAdmin()
+    {
+        return $this->is_admin; // Vérifier si l'utilisateur est un admin (si vous avez une colonne `is_admin`)
+    }
 }

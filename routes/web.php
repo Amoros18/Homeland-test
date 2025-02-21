@@ -66,5 +66,19 @@ Route::group(['prefix'=>'users'],function(){
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 
+Route::get('admin/login', [AdminController::class, 'viewLogin'])->name('view.login')->middleware('checkforauth');
+Route::post('admin/check-login', [AdminController::class, 'checkLogin'])->name('check.login');
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('/index', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/all-admins', [AdminController::class, 'allAdmins'])->name('admin.admin');
+    Route::get('/create-admins', [AdminController::class, 'createAdmins'])->name('admin.create');
+    Route::post('/create-admins', [AdminController::class, 'storeAdmins'])->name('admin.store');
 
-Route::get('admin/login', [AdminController::class, 'viewLogin'])->name('view.login');
+    Route::get('/all-hometype', [AdminController::class, 'allHomeTypes'])->name('admin.hometypes');
+    Route::get('/create-hometype', [AdminController::class, 'createHomeType'])->name('hometypes.create');
+    Route::post('/create-hometype', [AdminController::class, 'storeHomeType'])->name('hometypes.create');
+    Route::get('/edit-hometype/{id}', [AdminController::class, 'editHomeType'])->name('hometypes.edit');
+    Route::post('/update-hometype/{id}', [AdminController::class, 'updateHomeType'])->name('hometypes.update');
+    Route::get('/delete-hometype/{id}', [AdminController::class, 'deleteHomeType'])->name('hometypes.delete');
+
+});
