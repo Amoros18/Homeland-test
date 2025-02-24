@@ -128,7 +128,7 @@
 
 
 
-    <main class="py-4">
+    <main class="py-4" style="margin-top: -25px">
         @yield('content')
     </main>
     </div>

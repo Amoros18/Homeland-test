@@ -68,7 +68,7 @@ Route::get('about', [HomeController::class, 'about'])->name('about');
 
 Route::get('admin/login', [AdminController::class, 'viewLogin'])->name('view.login')->middleware('checkforauth');
 Route::post('admin/check-login', [AdminController::class, 'checkLogin'])->name('check.login');
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function(){
     Route::get('/index', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/all-admins', [AdminController::class, 'allAdmins'])->name('admin.admin');
     Route::get('/create-admins', [AdminController::class, 'createAdmins'])->name('admin.create');

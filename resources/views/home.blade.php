@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="">
 
         <div class="slide-one-item home-slider owl-carousel">
 
@@ -291,5 +290,4 @@
             </div>
         </div>
 
-    </div>
 @endsection

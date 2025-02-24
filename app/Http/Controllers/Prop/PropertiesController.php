@@ -45,7 +45,7 @@ class PropertiesController extends Controller
 
         }
         
-        return view('props.single',compact('singleProp','propImage','relateProps'));
+        return view('props.single',compact('singleProp','propImages','relateProps'));
     }
 
     public function insertRequest(Request $request){
