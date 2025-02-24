@@ -22,9 +22,7 @@ class PropertiesController extends Controller
     public function single($id){
         $singleProp = Property::find($id);
 
-        $propImage= PropImage::where('prop_id',$id)->get();
-
-
+        $propImages= PropImage::where('prop_id',$id)->get();
 
         $relateProps = Property::where('home_type', $singleProp->home_type)
         ->where('id','!=',$id)
@@ -43,7 +41,7 @@ class PropertiesController extends Controller
             $validateSavingPropretyCount = SavedProp::where('prop_id',$id)
             ->where('user_id',Auth::user()->id)
             ->count();
-            return view('props.single',compact('singleProp','propImage','relateProps','validateFormCount','validateSavingPropretyCount'));
+            return view('props.single',compact('singleProp','propImages','relateProps','validateFormCount','validateSavingPropretyCount'));
 
         }
         

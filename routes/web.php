@@ -89,6 +89,13 @@ Route::group(['prefix'=>'admin'],function(){
 
     //props
     Route::get('/all-props', [AdminController::class, 'allProps'])->name('props.all');
+    Route::get('/create-prop', [AdminController::class, 'createProps'])->name('props.create');
+    Route::post('/store-prop', [AdminController::class, 'storeProps'])->name('props.store');
     Route::get('/delete-prop/{id}', [AdminController::class, 'deleteProp'])->name('props.delete');
+
+    //create gallery
+    Route::get('/create-gallery', [AdminController::class, 'createGallery'])->name('gallery.create');
+    Route::post('/store-gallery', [AdminController::class, 'storeGallery'])->name('gallery.store');
+
 
 });

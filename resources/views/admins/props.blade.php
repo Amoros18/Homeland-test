@@ -11,8 +11,8 @@
     </div>
     <div class="row">
         <div class="col-xs-6">
-            <a href="" id="aj"  class="btn btn-success glyphicon glyphicon-plus" > Create Gallery</a>
-            <a href="" id="aj"  class="btn btn-success glyphicon glyphicon-plus" > Create Properties</a>
+            <a href="{{route('props.create')}}" id="aj"  class="btn btn-success glyphicon glyphicon-plus" > Create Property</a>
+            <a href="{{route('gallery.create')}}" id="aj"  class="btn btn-success glyphicon glyphicon-plus" > Create Gallery</a>
         </div>
     </div>
 </div>
